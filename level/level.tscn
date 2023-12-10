@@ -10,12 +10,11 @@ script = ExtResource("1_tscrs")
 [node name="GameMap" parent="." instance=ExtResource("1_h4e0k")]
 
 [node name="player" parent="." instance=ExtResource("2_osf2s")]
-position = Vector2(206, 237)
-metadata/_edit_lock_ = true
+position = Vector2(228, 118)
 
-[node name="Spawns" type="Node2D" parent="."]
-
-[node name="M1" type="Marker2D" parent="Spawns"]
-position = Vector2(100, 145)
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 7.5
+autostart = true
 
 [connection signal="shoot" from="player" to="." method="_on_player_shoot"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c65jpxaqyu1ox"]
+[gd_scene load_steps=7 format=3 uid="uid://c65jpxaqyu1ox"]
 
 [ext_resource type="Texture2D" uid="uid://4scfhxaf62xy" path="res://projectile.png" id="1_b7vb3"]
 [ext_resource type="Script" path="res://projectile/projectile.gd" id="1_plp6j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_87o2o"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6lyq"]
 radius = 28.0
+height = 80.0
 
 [sub_resource type="Animation" id="Animation_gt734"]
 length = 0.001
@@ -30,7 +31,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("CircleShape2D_87o2o")]
+"values": [SubResource("CapsuleShape2D_i6lyq")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -56,10 +57,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [80.0]
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6lyq"]
-radius = 28.0
-height = 80.0
 
 [sub_resource type="Animation" id="Animation_prvln"]
 resource_name = "launch"
@@ -122,7 +119,7 @@ _data = {
 [node name="Projectile" type="Area2D"]
 scale = Vector2(0.25, 0.25)
 collision_layer = 4
-collision_mask = 11
+collision_mask = 42
 script = ExtResource("1_plp6j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -137,6 +134,6 @@ autoplay = "launch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource("CircleShape2D_87o2o")
+shape = SubResource("CapsuleShape2D_i6lyq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

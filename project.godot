@@ -15,10 +15,15 @@ run/main_scene="res://level/level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Service="*res://service/Service.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -58,7 +63,9 @@ attack={
 2d_physics/layer_2="Prop"
 2d_physics/layer_3="Projectiles"
 2d_physics/layer_4="Map"
+2d_physics/layer_5="Zones"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
