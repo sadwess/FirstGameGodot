@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd8j44vlyxbj5"]
+[gd_scene load_steps=14 format=3 uid="uid://dd8j44vlyxbj5"]
 
 [ext_resource type="Script" path="res://UI/menu.gd" id="1_c7bp6"]
 [ext_resource type="Texture2D" uid="uid://d6ehkpssy5vt" path="res://menu.jpg" id="1_clmcu"]
@@ -53,6 +53,10 @@ default_font_size = 60
 [sub_resource type="Theme" id="Theme_3j8r1"]
 default_font = ExtResource("6_bw422")
 default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_ha10t"]
+default_font = ExtResource("6_bw422")
+default_font_size = 32
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_c7bp6")
@@ -124,6 +128,16 @@ theme = SubResource("Theme_3j8r1")
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Credit" type="Label" parent="."]
+offset_left = 947.0
+offset_top = 642.0
+offset_right = 1279.0
+offset_bottom = 719.0
+theme = SubResource("Theme_ha10t")
+text = "Created By Hedi and Aziz"
+horizontal_alignment = 1
+autowrap_mode = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
