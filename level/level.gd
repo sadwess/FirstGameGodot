@@ -33,9 +33,11 @@ func spanwRandom():
 
 func onPlayerDeath():
 	paused = true
+	$UI.visible = false
 	var question = preload("res://UI/question.tscn").instantiate() as CanvasLayer
 	$DeathQuestionWindow.add_child(question)
 func onPlayerRespawn():
+	$UI.visible = true
 	var player = preload("res://player/player.tscn").instantiate() as CharacterBody2D
 	player.position = $GameMap.spawns[0].position
 	$PlayerNode.add_child(player)
