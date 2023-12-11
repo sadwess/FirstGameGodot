@@ -38,7 +38,7 @@ func onPlayerRespawn():
 	var player = preload("res://player/player.tscn").instantiate() as CharacterBody2D
 	player.position = $GameMap.spawns[0].position
 	$PlayerNode.add_child(player)
-	paused = true
+	paused = false
 func scores(d):
 	if !paused:
 		score += d
