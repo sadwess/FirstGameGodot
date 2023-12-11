@@ -7,3 +7,4 @@ var playerHealth : int = 100
 signal playerDeath
 signal respawn
 var score : int
+signal player_shoot(pos,dir)

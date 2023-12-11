@@ -25,5 +25,4 @@ autostart = true
 
 [node name="DeathQuestionWindow" type="Node" parent="."]
 
-[connection signal="shoot" from="PlayerNode/player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

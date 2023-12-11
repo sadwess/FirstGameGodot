@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var max_speed = 500
 @onready var dirs = { "right": Vector2(1,0),"left": Vector2(-1, 0) }
 @onready var current_dir = dirs.right
-signal shoot(pos,dir)
 @onready var health : int = 100
 @onready var attack : bool = false
 @onready var damaged : bool = false
@@ -11,6 +10,7 @@ var death : bool = false
 var spawned : bool = false
 
 func _ready():
+	Service.playerHealth = health
 	$Animations.play("spawn")
 	$SpawnTimer.start()
 	Service.connect("attack",hit)
@@ -59,7 +59,7 @@ func run_idle_anim(v):
 			$Animations.play("run")
 func shooting():
 		var dir = (get_global_mouse_position() - position).normalized()
-		shoot.emit($Marker2D.global_position,dir)
+		Service.emit_signal("player_shoot",$Marker2D.global_position,dir)
 
 func hit(damage):
 	health-=damage
@@ -70,6 +70,8 @@ func hit(damage):
 		damaged = true
 		$DamagedTimer.start()
 	elif health <= 0:
+		if !$DeathSound.playing:
+			$DeathSound.play()
 		$Animations.play("die")
 		death = true
 

@@ -14,6 +14,7 @@ config/name="Pi_game"
 config/version="1.0"
 run/main_scene="res://UI/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/windows_native_icon="res://icon.svg"
 
 [autoload]
 

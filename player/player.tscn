@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsunomijhm0vn"]
+[gd_scene load_steps=15 format=3 uid="uid://bsunomijhm0vn"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_wmbws"]
 [ext_resource type="Texture2D" uid="uid://csesel5bvln6h" path="res://Necromancer_creativekind-Sheet.png" id="2_im0yh"]
-[ext_resource type="AudioStream" uid="uid://claq3uahh7edr" path="res://SFX Magic Evil Spell Sound Effect.mp3" id="3_6oy24"]
+[ext_resource type="AudioStream" uid="uid://brq05qr6k5njj" path="res://cast5.wav" id="3_n8o3y"]
 [ext_resource type="AudioStream" uid="uid://bhj4hfi61nlsv" path="res://hit.mp3" id="4_fcd3d"]
+[ext_resource type="AudioStream" uid="uid://dlis75sash4nw" path="res://dead.wav" id="5_jf5sg"]
 
 [sub_resource type="Animation" id="Animation_wj712"]
 length = 0.001
@@ -193,11 +194,15 @@ wait_time = 0.225
 one_shot = true
 
 [node name="ProjectileSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_6oy24")
+stream = ExtResource("3_n8o3y")
 volume_db = -15.0
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_fcd3d")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jf5sg")
+volume_db = -5.0
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

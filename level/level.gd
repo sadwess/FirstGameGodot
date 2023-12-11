@@ -7,19 +7,15 @@ var monsterTypeIncrement : int = 0
 var paused : bool = false
 @onready var monsters = [skeleton,demon,wizard]
 func _ready():
+	Input.set_custom_mouse_cursor(load("res://crosshair.png"))
 	Service.connect("respawn",onPlayerRespawn)
 	Service.connect("wizardAttack",on_wizard_shoot)
 	Service.connect("playerDeath",onPlayerDeath)
+	Service.connect("player_shoot",shoot)
 func _process(delta):
 	Service.monstersCount = $Monsters.get_children().size()
 	scores(delta)
 
-func _on_player_shoot(pos,dir):
-	var laser = preload("res://projectile/projectile.tscn").instantiate() as Area2D
-	laser.position = pos
-	laser.rotation_degrees = rad_to_deg(dir.angle()) 
-	laser.direction = dir
-	$".".add_child(laser)
 func on_wizard_shoot(pos,dir):
 	var wP = preload("res://projectile/wizard_projectile.tscn").instantiate() as Area2D
 	wP.position = pos
@@ -37,6 +33,7 @@ func onPlayerDeath():
 	var question = preload("res://UI/question.tscn").instantiate() as CanvasLayer
 	$DeathQuestionWindow.add_child(question)
 func onPlayerRespawn():
+	Input.set_custom_mouse_cursor(load("res://crosshair.png"))
 	$UI.visible = true
 	var player = preload("res://player/player.tscn").instantiate() as CharacterBody2D
 	player.position = $GameMap.spawns[0].position
@@ -52,3 +49,10 @@ func scores(d):
 		monsterTypeIncrement+=1	
 func _on_spawn_timer_timeout():
 	spanwRandom()
+func shoot(pos,dir):
+	print("s")
+	var laser = preload("res://projectile/projectile.tscn").instantiate() as Area2D
+	laser.position = pos
+	laser.rotation_degrees = rad_to_deg(dir.angle()) 
+	laser.direction = dir
+	$".".add_child(laser)

@@ -3,6 +3,7 @@ extends CanvasLayer
 var questions : Array
 var question
 func _ready():
+	Input.set_custom_mouse_cursor(load("res://mouse.png"))
 	questions = getData()
 	question = questions[randi_range(0,questions.size())]
 	$Cadre/Label3.text = question["question"]
