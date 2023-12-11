@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bnooh280yhy72"]
+
+[ext_resource type="FontFile" uid="uid://b8x0dcr2nt1b2" path="res://wizard/Diablo Heavy.ttf" id="1_vjse0"]
+
+[resource]
+default_font = ExtResource("1_vjse0")
+default_font_size = 24

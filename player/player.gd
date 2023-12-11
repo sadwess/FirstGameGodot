@@ -8,17 +8,22 @@ signal shoot(pos,dir)
 @onready var attack : bool = false
 @onready var damaged : bool = false
 var death : bool = false
+var spawned : bool = false
 
 func _ready():
+	$Animations.play("spawn")
+	$SpawnTimer.start()
 	Service.connect("attack",hit)
 
 
 func _process(_delta):
-	if !death:
+	if !death and spawned:
 		if Input.is_action_just_pressed("attack") and !attack:	
 			$Animations.play("attack")
+			$ProjectileSound.play()
 			$AttackTimer.start()
 			attack = true
+			
 		var direction = Input.get_vector("gauche","droite","haut","bas")
 		velocity = direction * max_speed
 		move_and_slide()
@@ -58,6 +63,8 @@ func shooting():
 
 func hit(damage):
 	health-=damage
+	Service.playerHealth = health
+	$Hit.play(0.5)
 	if health>0:
 		$Animations.play("damaged")
 		damaged = true
@@ -70,3 +77,10 @@ func _on_attack_timer_timeout():
 	attack = false
 func _on_damaged_timer_timeout():
 	damaged = false
+func onPlayerDeath():
+	queue_free()
+	Service.emit_signal("playerDeath")
+
+
+func _on_spawn_timer_timeout():
+	spawned = true

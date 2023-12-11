@@ -30,7 +30,7 @@ func _process(_delta):
 			$AnimationPlayer.play("attack")
 			
 
-func _on_range_body_entered(_body):
+func _on_range_body_entered(body):
 	active_attack = true
 
 
@@ -42,11 +42,11 @@ func attacking():
 	
 func hit():
 	health-=25
-	if(health!=0):
+	if(health>0):
 		$AnimationPlayer.play("hit")
 		walk = false
 		$HitTimer.start()
-	else:
+	elif health <=0:
 		death = true
 		$AnimationPlayer.play("die")
 

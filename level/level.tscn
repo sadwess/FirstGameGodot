@@ -1,20 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://culpk7emcyw2h"]
+[gd_scene load_steps=5 format=3 uid="uid://culpk7emcyw2h"]
 
 [ext_resource type="PackedScene" uid="uid://bka7v1mvgqnag" path="res://map/map.tscn" id="1_h4e0k"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_tscrs"]
 [ext_resource type="PackedScene" uid="uid://bsunomijhm0vn" path="res://player/player.tscn" id="2_osf2s"]
+[ext_resource type="PackedScene" uid="uid://bthy066ihcdkh" path="res://UI/ui.tscn" id="4_jep6w"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_tscrs")
 
 [node name="GameMap" parent="." instance=ExtResource("1_h4e0k")]
 
-[node name="player" parent="." instance=ExtResource("2_osf2s")]
+[node name="PlayerNode" type="Node2D" parent="."]
+
+[node name="player" parent="PlayerNode" instance=ExtResource("2_osf2s")]
 position = Vector2(228, 118)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 7.5
+wait_time = 10.0
 autostart = true
 
-[connection signal="shoot" from="player" to="." method="_on_player_shoot"]
+[node name="Monsters" type="Node" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("4_jep6w")]
+
+[node name="DeathQuestionWindow" type="Node" parent="."]
+
+[connection signal="shoot" from="PlayerNode/player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

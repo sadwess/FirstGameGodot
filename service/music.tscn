@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0jtcxhrr0cd5"]
+
+[ext_resource type="Script" path="res://Music.gd" id="1_eveg7"]
+[ext_resource type="AudioStream" uid="uid://ddmlojlxd6fxj" path="res://Diablo 1 Soundtrack.mp3" id="2_wflwy"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_eveg7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wflwy")
+volume_db = -7.5

@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd8j44vlyxbj5"]
+
+[ext_resource type="Script" path="res://UI/menu.gd" id="1_c7bp6"]
+[ext_resource type="Texture2D" uid="uid://d6ehkpssy5vt" path="res://menu.jpg" id="1_clmcu"]
+[ext_resource type="Texture2D" uid="uid://b2c2dgrgtfgwj" path="res://logo.png" id="2_ek7wa"]
+[ext_resource type="Texture2D" uid="uid://badxqgtki15ag" path="res://button.png" id="3_uambd"]
+[ext_resource type="Texture2D" uid="uid://dfq5nyprp3ag3" path="res://buttonStock1d.png" id="4_32jpy"]
+[ext_resource type="Texture2D" uid="uid://b7bmqq4qnflj" path="res://buttonStock1h_0.png" id="5_1oq02"]
+[ext_resource type="FontFile" uid="uid://b8x0dcr2nt1b2" path="res://wizard/Diablo Heavy.ttf" id="6_bw422"]
+
+[sub_resource type="Animation" id="Animation_dadtj"]
+resource_name = "title"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_j7hhf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_535xt"]
+_data = {
+"RESET": SubResource("Animation_j7hhf"),
+"title": SubResource("Animation_dadtj")
+}
+
+[sub_resource type="Theme" id="Theme_cd484"]
+default_font = ExtResource("6_bw422")
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_3j8r1"]
+default_font = ExtResource("6_bw422")
+default_font_size = 60
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_c7bp6")
+
+[node name="Bg" type="TextureRect" parent="."]
+offset_right = 1400.0
+offset_bottom = 788.0
+scale = Vector2(0.915, 0.915)
+texture = ExtResource("1_clmcu")
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 652.0
+offset_top = 143.0
+offset_right = 692.0
+offset_bottom = 183.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Title"]
+position = Vector2(-11.5, -38)
+scale = Vector2(1.43449, 1)
+texture = ExtResource("2_ek7wa")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+libraries = {
+"": SubResource("AnimationLibrary_535xt")
+}
+autoplay = "title"
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 1.0
+offset_top = 316.0
+offset_right = 1280.0
+offset_bottom = 516.0
+texture_normal = ExtResource("3_uambd")
+texture_pressed = ExtResource("4_32jpy")
+texture_hover = ExtResource("5_1oq02")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Play"]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 59.0
+offset_right = 747.0
+offset_bottom = 133.0
+theme = SubResource("Theme_cd484")
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 1.0
+offset_top = 519.0
+offset_right = 1281.0
+offset_bottom = 719.0
+texture_normal = ExtResource("3_uambd")
+texture_pressed = ExtResource("4_32jpy")
+texture_hover = ExtResource("5_1oq02")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Quit"]
+offset_left = 530.0
+offset_top = 62.0
+offset_right = 748.0
+offset_bottom = 131.0
+theme = SubResource("Theme_3j8r1")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

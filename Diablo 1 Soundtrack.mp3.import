@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddmlojlxd6fxj"
+path="res://.godot/imported/Diablo 1 Soundtrack.mp3-42956a98bac6322084f7a430acf578fe.mp3str"
+
+[deps]
+
+source_file="res://Diablo 1 Soundtrack.mp3"
+dest_files=["res://.godot/imported/Diablo 1 Soundtrack.mp3-42956a98bac6322084f7a430acf578fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -42,11 +42,11 @@ func attacking():
 	
 func hit():
 	health-=25
-	if(health!=0):
+	if(health>0):
 		$Animation.play("hit")
 		walk = false
 		$HitTimer.start()
-	else:
+	elif health<=0:
 		death = true
 		$Animation.play("die")
 	

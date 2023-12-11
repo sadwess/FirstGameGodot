@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://bthy066ihcdkh"]
+
+[ext_resource type="Texture2D" uid="uid://dbxsf6ye0e03h" path="res://skull.png" id="1_415dp"]
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_pt2eb"]
+[ext_resource type="FontFile" uid="uid://b8x0dcr2nt1b2" path="res://wizard/Diablo Heavy.ttf" id="3_72aeh"]
+[ext_resource type="Texture2D" uid="uid://l6v413fqne07" path="res://Health/no health.png" id="4_6jrqn"]
+[ext_resource type="Texture2D" uid="uid://lqri60sujgv1" path="res://Health/empty health bar.png" id="5_vxk0s"]
+[ext_resource type="Texture2D" uid="uid://dr8uoslnwy1ky" path="res://Health/health.png" id="6_rdcng"]
+
+[sub_resource type="Theme" id="Theme_ahp3v"]
+default_font = ExtResource("3_72aeh")
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_sot0u"]
+default_font = ExtResource("3_72aeh")
+default_font_size = 15
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_pt2eb")
+
+[node name="EnemiesCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.05
+anchor_top = 0.79
+anchor_right = 0.05
+anchor_bottom = 0.866
+offset_left = 249.0
+offset_top = 61.2
+offset_right = 249.0
+offset_bottom = 61.2
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemiesCounter"]
+layout_mode = 0
+offset_top = -27.3333
+offset_right = 40.0
+offset_bottom = 40.6667
+scale = Vector2(0.972091, 1)
+
+[node name="TextureRect" type="TextureRect" parent="EnemiesCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_415dp")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="EnemiesCounter/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ahp3v")
+text = "10"
+horizontal_alignment = 1
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 500.0
+offset_top = 660.0
+offset_right = 540.0
+offset_bottom = 700.0
+scale = Vector2(2, 2)
+
+[node name="HealthBar" type="TextureProgressBar" parent="Health"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.5
+offset_top = -49.5
+offset_right = -123.5
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+texture_under = ExtResource("4_6jrqn")
+texture_over = ExtResource("5_vxk0s")
+texture_progress = ExtResource("6_rdcng")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Health"]
+layout_mode = 0
+offset_left = 262.5
+offset_top = -310.5
+offset_right = 302.5
+offset_bottom = -270.5
+metadata/_edit_group_ = true
+
+[node name="score" type="Label" parent="Health/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_sot0u")

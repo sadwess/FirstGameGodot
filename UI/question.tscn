@@ -1,0 +1,192 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4rh2pp0xmog7"]
+
+[ext_resource type="Texture2D" uid="uid://cufr2n8ync7rn" path="res://hell.jpg" id="1_c5her"]
+[ext_resource type="Script" path="res://UI/question.gd" id="1_plylp"]
+[ext_resource type="FontFile" uid="uid://b8x0dcr2nt1b2" path="res://wizard/Diablo Heavy.ttf" id="2_vojqw"]
+[ext_resource type="Texture2D" uid="uid://badxqgtki15ag" path="res://button.png" id="3_b8u8f"]
+[ext_resource type="Texture2D" uid="uid://dfq5nyprp3ag3" path="res://buttonStock1d.png" id="5_bxd4m"]
+[ext_resource type="Texture2D" uid="uid://b7bmqq4qnflj" path="res://buttonStock1h_0.png" id="6_wgpeg"]
+[ext_resource type="Theme" uid="uid://bnooh280yhy72" path="res://UI/df.tres" id="7_jwipf"]
+
+[sub_resource type="Theme" id="Theme_ggu63"]
+default_font = ExtResource("2_vojqw")
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_yhebp"]
+default_font = ExtResource("2_vojqw")
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_i4kuv"]
+default_font = ExtResource("2_vojqw")
+default_font_size = 43
+
+[sub_resource type="Theme" id="Theme_m6vdy"]
+default_font = ExtResource("2_vojqw")
+default_font_size = 43
+
+[node name="Question" type="CanvasLayer"]
+script = ExtResource("1_plylp")
+
+[node name="Cadre" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Cadre"]
+layout_mode = 0
+offset_left = -619.0
+offset_top = -338.0
+offset_right = 657.0
+offset_bottom = 378.0
+theme = SubResource("Theme_ggu63")
+color = Color(1, 1, 1, 0.698039)
+
+[node name="TextureRect" type="TextureRect" parent="Cadre"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.5
+anchor_right = 0.425
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = -320.0
+offset_right = 841.0
+offset_bottom = 530.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_c5her")
+
+[node name="Label" type="Label" parent="Cadre"]
+layout_mode = 0
+offset_left = -474.0
+offset_top = -300.0
+offset_right = 525.0
+offset_bottom = -226.0
+theme = SubResource("Theme_yhebp")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "You Died
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Cadre"]
+layout_mode = 0
+offset_left = -473.0
+offset_top = -208.0
+offset_right = 525.0
+offset_bottom = -134.0
+theme = SubResource("Theme_i4kuv")
+theme_override_colors/font_color = Color(1, 0.623529, 0, 1)
+text = "answer this question to resurrect
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Cadre"]
+layout_mode = 0
+offset_left = -475.0
+offset_top = -94.0
+offset_right = 523.0
+offset_bottom = -43.0
+theme = SubResource("Theme_m6vdy")
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="Cadre"]
+layout_mode = 2
+offset_left = -474.0
+offset_top = -6.0
+offset_right = 26.0
+offset_bottom = 194.0
+texture_normal = ExtResource("3_b8u8f")
+texture_pressed = ExtResource("5_bxd4m")
+texture_hover = ExtResource("6_wgpeg")
+stretch_mode = 0
+
+[node name="b1" type="Label" parent="Cadre/TextureButton"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 72.0
+offset_right = 432.0
+offset_bottom = 122.0
+theme = ExtResource("7_jwipf")
+text = "dfdfd"
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Cadre"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = -6.0
+offset_right = 525.0
+offset_bottom = 194.0
+texture_normal = ExtResource("3_b8u8f")
+texture_pressed = ExtResource("5_bxd4m")
+texture_hover = ExtResource("6_wgpeg")
+stretch_mode = 0
+
+[node name="b2" type="Label" parent="Cadre/TextureButton2"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 72.0
+offset_right = 425.0
+offset_bottom = 122.0
+theme = ExtResource("7_jwipf")
+text = "dsds"
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Cadre"]
+layout_mode = 2
+offset_left = -474.0
+offset_top = 193.0
+offset_right = 26.0
+offset_bottom = 393.0
+texture_normal = ExtResource("3_b8u8f")
+texture_pressed = ExtResource("5_bxd4m")
+texture_hover = ExtResource("6_wgpeg")
+stretch_mode = 0
+
+[node name="b3" type="Label" parent="Cadre/TextureButton3"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 435.0
+offset_bottom = 122.0
+theme = ExtResource("7_jwipf")
+text = "dsds"
+vertical_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="Cadre"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 193.0
+offset_right = 525.0
+offset_bottom = 393.0
+texture_normal = ExtResource("3_b8u8f")
+texture_pressed = ExtResource("5_bxd4m")
+texture_hover = ExtResource("6_wgpeg")
+stretch_mode = 0
+
+[node name="b4" type="Label" parent="Cadre/TextureButton4"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 72.0
+offset_right = 423.0
+offset_bottom = 122.0
+theme = ExtResource("7_jwipf")
+text = "dsds"
+vertical_alignment = 1
+
+[connection signal="pressed" from="Cadre/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Cadre/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Cadre/TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="Cadre/TextureButton4" to="." method="_on_texture_button_4_pressed"]

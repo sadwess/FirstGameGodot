@@ -32,12 +32,10 @@ func _process(_delta):
 			$attack.visible = true
 			flip()
 			if canFire:
-				
-				
 				$AnimationPlayer.play("attack")
 				canFire = false
 				$FireTimer.start()
-
+				last_state = false
 func _on_range_body_entered(body):
 	active_attack = true
 
@@ -59,12 +57,12 @@ func flip():
 				scale.x *= -1
 func hit():
 	health-=25
-	if(health!=0):
-		var tween = get_tree().create_tween()
-		tween.tween_property(self,"modulate",Color.WHITE,1)
+	var tween = get_tree().create_tween()
+	tween.tween_property($".", "modulate:v", 1, 0.25).from(15)
+	if(health>0):
 		walk = false
 		$HitTimer.start()
-	else:
+	elif health<=0:
 		$run.visible = false
 		$attack.visible = false
 		$die.visible = true
@@ -73,7 +71,7 @@ func hit():
 
 
 func _on_hit_timer_timeout():
-	walk =	true
+	walk = true
 
 
 func _on_fire_timer_timeout():

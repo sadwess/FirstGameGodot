@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Pi_game"
-run/main_scene="res://level/level.tscn"
+run/main_scene="res://UI/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Service="*res://service/Service.gd"
+Music="*res://service/music.tscn"
 
 [display]
 
