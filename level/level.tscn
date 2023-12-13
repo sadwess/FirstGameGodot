@@ -1,14 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://culpk7emcyw2h"]
+[gd_scene load_steps=6 format=3 uid="uid://culpk7emcyw2h"]
 
 [ext_resource type="PackedScene" uid="uid://bka7v1mvgqnag" path="res://map/map.tscn" id="1_h4e0k"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_tscrs"]
 [ext_resource type="PackedScene" uid="uid://bsunomijhm0vn" path="res://player/player.tscn" id="2_osf2s"]
 [ext_resource type="PackedScene" uid="uid://bthy066ihcdkh" path="res://UI/ui.tscn" id="4_jep6w"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_11v8d"]
+vertices = PackedVector2Array(738, 537, 738, 467, 753, 390, 1159, 284, 1159, 478, 759, 537, 753, 175, 1003, 187, 153, 445, 60, 445, 68, 135, 71, 135, 587, 175, 585, 662, 55, 661, 57, 586, 153, 586, 585, 537, 1223, 478, 1221, 588, 1155, 588, 777, 549, 1160, 59, 1227, 59, 1225, 284, 1160, 187, 1003, 59, 71, 60, 587, 390, 603, 537, 603, 467, 1155, 664, 777, 663, 759, 549)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(3, 2, 6, 7), PackedInt32Array(8, 9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 13, 16, 8), PackedInt32Array(5, 4, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(25, 24, 3, 7), PackedInt32Array(26, 7, 6, 27), PackedInt32Array(27, 6, 12, 11), PackedInt32Array(17, 8, 12, 28), PackedInt32Array(29, 17, 28, 30), PackedInt32Array(30, 28, 2, 1), PackedInt32Array(20, 31, 32, 21), PackedInt32Array(5, 21, 33)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 6, 1283, 4, 1275, 720, -1, 716)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 55.0
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_tscrs")
 
-[node name="GameMap" parent="." instance=ExtResource("1_h4e0k")]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_11v8d")
+
+[node name="GameMap" parent="NavigationRegion2D" instance=ExtResource("1_h4e0k")]
+
+[node name="Monsters" type="Node" parent="NavigationRegion2D"]
 
 [node name="PlayerNode" type="Node2D" parent="."]
 
@@ -16,10 +28,8 @@ script = ExtResource("1_tscrs")
 position = Vector2(228, 118)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
-
-[node name="Monsters" type="Node" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("4_jep6w")]
 

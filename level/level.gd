@@ -13,7 +13,7 @@ func _ready():
 	Service.connect("playerDeath",onPlayerDeath)
 	Service.connect("player_shoot",shoot)
 func _process(delta):
-	Service.monstersCount = $Monsters.get_children().size()
+	Service.monstersCount = $NavigationRegion2D/Monsters.get_children().size()
 	scores(delta)
 
 func on_wizard_shoot(pos,dir):
@@ -24,8 +24,8 @@ func on_wizard_shoot(pos,dir):
 	$".".add_child(wP)
 func spanwRandom():
 	var monster = monsters[randi_range(0,monsterTypeIncrement)].instantiate() as CharacterBody2D
-	monster.position = $GameMap.spawns[randi_range(0,2)].position
-	$Monsters.add_child(monster)
+	monster.position = $NavigationRegion2D/GameMap.spawns[randi_range(0,2)].position
+	$NavigationRegion2D/Monsters.add_child(monster)
 
 func onPlayerDeath():
 	paused = true
@@ -43,9 +43,9 @@ func scores(d):
 	if !paused:
 		score += d
 	Service.score = score
-	if score > 90 and monsterTypeIncrement == 0:
+	if score > 60 and monsterTypeIncrement == 0:
 		monsterTypeIncrement+=1
-	if score > 180 and  monsterTypeIncrement ==1:
+	if score > 120 and  monsterTypeIncrement ==1:
 		monsterTypeIncrement+=1	
 func _on_spawn_timer_timeout():
 	spanwRandom()

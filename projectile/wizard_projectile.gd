@@ -13,5 +13,5 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	Service.emit_signal("attack",25)
+	Service.emit_signal("attack",20)
 

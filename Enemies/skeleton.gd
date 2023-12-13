@@ -7,6 +7,7 @@ var damage : int = 10
 var walk : bool = true
 var death : bool = false
 var spawned : bool = false
+@onready var nav := $NavigationAgent2D
 func _ready():
 	$AnimationPlayer.play("spawn",-1,1,true)
 	$SpawnTimer.start()
@@ -14,7 +15,8 @@ func _process(_delta):
 	if !death and spawned:
 		if !active_attack:
 			if walk:
-				velocity = (Service.player_pos - position).normalized() * 100
+				nav.target_position = Service.player_pos
+				velocity = (nav.get_next_path_position() - global_position).normalized() * 100
 				move_and_slide()
 			
 				if Service.player_pos.x > global_position.x:

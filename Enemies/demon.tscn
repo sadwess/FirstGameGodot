@@ -180,6 +180,8 @@ shape = SubResource("CapsuleShape2D_8gx7f")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

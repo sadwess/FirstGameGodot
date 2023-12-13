@@ -8,6 +8,7 @@ var active_attack : bool = false
 var health : int = 100
 var walk : bool = true
 var canFire : bool = true
+@onready var nav := $NavigationAgent2D
 func _ready():
 	$run.visible = false
 	$attack.visible = false
@@ -21,7 +22,8 @@ func _process(_delta):
 			if walk:
 				$attack.visible = false
 				$run.visible = true
-				velocity = (Service.player_pos - position).normalized() * 100
+				nav.target_position = Service.player_pos
+				velocity = (nav.get_next_path_position() - global_position).normalized() * 100
 				move_and_slide()
 				flip()
 				if !last_state:
